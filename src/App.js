@@ -8,6 +8,7 @@ import {
   VideoDetails,
   ChannelDetail,
   SearchFeed,
+  SideBar,
 } from "./components";
 
 const App = () => (
