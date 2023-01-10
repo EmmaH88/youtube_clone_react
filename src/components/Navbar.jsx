@@ -1,10 +1,10 @@
-import React from "react";
 import { Stack } from "@mui/material";
 import { Link } from "react-router-dom";
+import SearchBar from "./SearchBar";
+import { logo } from "../utils/constants";
 
-import { logo } from "./utils/constant";
 const Navbar = () => (
-  <stack
+  <Stack
     direction="row"
     alignItems="center"
     p={2}
@@ -15,7 +15,7 @@ const Navbar = () => (
       justifyContent: "space-bteween",
     }}
   >
-    <link
+    <Link
       to="/"
       style={{
         display: "flex",
@@ -23,8 +23,9 @@ const Navbar = () => (
       }}
     >
       <img src={logo} alt="logo" height={45} />
-    </link>
-  </stack>
+    </Link>
+    <SearchBar />
+  </Stack>
 );
 
 export default Navbar;
