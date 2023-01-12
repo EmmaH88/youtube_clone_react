@@ -13,13 +13,17 @@ const ChannelDetail = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetchFromAPI(`channels?part=snippet&id=${id}`).then((data) =>
-      setChannelDetail(data?.items)
-    );
+    const fetchResults = async () => {
+      const data = await fetchFromAPI(`channels?part=snippet&id=${id}`);
 
-    fetchFromAPI(`search?channelId=${id}&part=snippet&order=date`).then(
-      (data) => setVideos(data?.items)
-    );
+      setChannelDetail(data.items[0]);
+
+      const videosData = await fetchFromAPI(
+        `search?channelId=${id}&part=snippet%2Cid&order=date`
+      );
+      setVideos(videosData?.items);
+    };
+    fetchResults();
   }, [id]);
 
   return (
