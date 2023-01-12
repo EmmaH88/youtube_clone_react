@@ -1,15 +1,14 @@
-import { formGroupClasses } from "@mui/material";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Paper, IconButton } from "@mui/material";
-import { Search } from "@mui/icons-material";
+import SearchIcon from "@mui/icons-material/Search";
 
 const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState(" ");
 
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const onHandleSubmit = (e) => {
     e.preventDefault();
 
     if (searchTerm) {
@@ -21,7 +20,7 @@ const SearchBar = () => {
   return (
     <Paper
       component="form"
-      onSubmit={handleSubmit}
+      onSubmit={onHandleSubmit}
       sx={{
         borderRadius: 20,
         border: "2px solid #e3e3e3",
@@ -43,7 +42,7 @@ const SearchBar = () => {
           color: "red",
         }}
       >
-        <Search />
+        <SearchIcon />
       </IconButton>
     </Paper>
   );
