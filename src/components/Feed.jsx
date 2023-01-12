@@ -6,9 +6,11 @@ import { SideBar, Videos } from "./";
 
 const Feed = () => {
   const [selectedCategory, setSelectedCategory] = useState("New");
-  const [videos, setVideos] = useState([]);
+  const [videos, setVideos] = useState(null);
 
   useEffect(() => {
+    setVideos(null);
+
     fetchFromAPI(`search?part=snippet&q=${selectedCategory}`).then((data) =>
       setVideos(data.items)
     );
@@ -36,7 +38,7 @@ const Feed = () => {
           variant="body2"
           sx={{ mt: 1.5, color: "#fff" }}
         >
-          CopyRight 2023 Emma's Clone
+          CopyRight ©️ 2023 Emma's Clone
         </Typography>
       </Box>
 
