@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
 import { Typography, Box, Stack } from "@mui/material";
-import { CheckCircle, SettingsInputSvideoSharp } from "@mui/icons-material";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
-import { Videos } from "./";
+import { Videos, Loader } from "./";
 import { fetchFromAPI } from "../utils/fetchFromAPI";
 
 const VideoDetails = () => {
@@ -22,7 +22,7 @@ const VideoDetails = () => {
     );
   }, [id]);
 
-  if (!videoDetail?.snippet) return "Loading...";
+  if (!videoDetail?.snippet) return <Loader />;
 
   const {
     snippet: { title, channelId, channelTitle },
@@ -59,7 +59,7 @@ const VideoDetails = () => {
                   variant={{ sm: "subtitle1", md: "h6" }}
                   color="#fff"
                 >
-                  <CheckCircle
+                  <CheckCircleIcon
                     sx={{ fontSize: "12px", color: "grey", ml: "5px" }}
                   />
 
